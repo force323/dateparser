@@ -47,6 +47,7 @@ class DateParser
 
     function __construct($date = "")
     {
+        date_default_timezone_set("Asia/Dubai");
         $this->monthNow = date("m");
         $this->yearNow = date("Y");
         $this->date = $date;
@@ -63,23 +64,23 @@ class DateParser
                                 throw new Exception("Something wrong");
                             } else {
                                 $this->years = $this->months / 12;
-                                return "E " . $this->months;
+                                return $this->months;
                             }
                         } else {
                             $this->years = $this->months / 12;
-                            return "D " . $this->months;
+                            return $this->months;
                         }
                     } else {
                         $this->years = $this->months / 12;
-                        return "C " . $this->months;
+                        return $this->months;
                     }
                 } else {
                     $this->years = $this->months / 12;
-                    return "B " . $this->months;
+                    return $this->months;
                 }
             } else {
                 $this->years = $this->months / 12;
-                return "A " . $this->months;
+                return $this->months;
             }
 
         } else {
