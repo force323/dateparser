@@ -7,27 +7,36 @@
  * To change this template use File | Settings | File Templates.
  */
 require "../DateParser.php";
+/**
+ * Class DateParserTest
+ */
 class DateParserTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     *
+     */
     public function setUp()
     {
         $this->parser = new DateParser();
     }
 
+    /**
+     * @return array
+     */
     public function provider()
     {
         return array(
             array("60лет", 636), //1
             array("12 лет", 144), //2
             array("12года", 144), //3
-//              array("15 года",), //4
-//              array("98 года",), //5
-//              array("5месяцев",), //6
-//              array("12 месяцев",), //7
-//              array("01.01.1985",), //8
-//              array("1.1.2010",), //9
-//              array("1.01.10",), //10
-//              array("1.01.93",), //11
+            array("1993", 240), //4
+            array("98 года", 180), //5
+            array("5месяцев", 5), //6
+            array("12 месяцев", 12), //7
+            array("01.01.1985", 338), //8
+            array("1.1.2010", 38), //9
+            array("1.01.10", 38), //10
+            array("1.01.93", 242), //11
 //              array("с 1998года",), //12
 //              array("с января 1998 года",), //13
 //              array("с февраля 1998 года",), //14
@@ -64,6 +73,14 @@ class DateParserTest extends PHPUnit_Framework_TestCase
         $this->parser->setDate($a);
         $this->assertEquals($b, $this->parser->parse());
 
+
+    }
+
+    /**
+     *
+     */
+    public function testSome()
+    {
 
     }
 }

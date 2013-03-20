@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by JetBrains PhpStorm.
- * User: ivanov_sv
+ * User: 3  Wivanov_sv
  * Date: 13.03.13
  * Time: 14:16
  * To change this template use File | Settings | File Templates.
@@ -91,8 +91,14 @@ class DateParser
     public function digitToMonths()
     {
         if (preg_match($this->pattern_onlyDigit, $this->date, $matches)) {
-            $this->months = $matches[2];
-            return $matches[2];
+
+            if ($matches[2] < 1800) {
+                $this->months = $matches[2];
+                return $matches[2];
+            } elseif ($matches[2] >= 1800) {
+                $this->months = ($this->yearNow - $matches[2]) * 12;
+                return $this->months;
+            }
         }
         return false;
     }
