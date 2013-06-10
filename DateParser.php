@@ -55,6 +55,8 @@ class DateParser
 
     public function parse()
     {
+        // WTF?! big shit
+        // TODO refactor
         if (!empty($this->date)) {
             if (!$this->digitToMonths()) {
                 if (!$this->yearsToMonths()) {
@@ -105,6 +107,8 @@ class DateParser
 
     public function yearsToMonths()
     {
+        // TODO refactor
+        // rename, add const
         $this->date_month = $this->monthStrToInt();
         if (preg_match($this->pattern_years, $this->date, $matches)) {
             if ($matches[2] > ($this->yearNow + 10 - 2000)) {
